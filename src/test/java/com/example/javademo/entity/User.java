@@ -20,12 +20,6 @@ public class User implements Serializable {
     private static String username;
     private transient String passwd;
 
-    //    private static String stac = "静态";
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
-
     public static String getUsername() {
         return username;
     }
