@@ -1,10 +1,9 @@
 package com.example.javademo.test.maptest;
 
+import com.example.javademo.modal.Foundational;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author: zhaos
@@ -45,5 +44,20 @@ public class MapTest {
             System.out.println("key:" + k);
             System.out.println("value:" + v);
         });
+    }
+
+    @Test
+    public void copyTest() {
+        List<Foundational> list1 = new ArrayList<>();
+        list1.add(new Foundational(1,1.0,false));
+        list1.add(new Foundational(2,2.0,false));
+
+        List<Foundational> list2 = new ArrayList<>(list1);
+        list2.get(0).setId(11);
+        list2.add(new Foundational(3,3.0,false));
+
+        System.out.println(list1);
+        System.out.println(list2);
+
     }
 }
