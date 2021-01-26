@@ -14,21 +14,13 @@ public class MapTest {
     @Test
     public void hashMap() throws InterruptedException {
 
-        final HashMap<String,String> map = new HashMap<String,String>();
+        final HashMap<String,String> map = new HashMap<>();
 
-        Thread t = new Thread(new Runnable(){
-            @Override
-            public  void run(){
-                for(int x=0;x<10000;x++){
-                    Thread tt = new Thread(new Runnable(){
-                        @Override
-                        public void run(){
-                            map.put(UUID.randomUUID().toString(),"");
-                        }
-                    });
-                    tt.start();
-                    System.out.println(tt.getName());
-                }
+        Thread t = new Thread(() -> {
+            for(int x=0;x<10000;x++){
+                Thread tt = new Thread(() -> map.put(UUID.randomUUID().toString(),""));
+                tt.start();
+                System.out.println(tt.getName());
             }
         });
         t.start();
