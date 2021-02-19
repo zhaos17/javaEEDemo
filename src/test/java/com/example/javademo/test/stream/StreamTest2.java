@@ -180,6 +180,7 @@ public class StreamTest2 {
 
     /**
      * 求Integer集合的元素之和、乘积和最大值
+     * reduce：参数identity为自定义的默认值
      */
     @Test
     void testReduce01() {
@@ -374,5 +375,12 @@ public class StreamTest2 {
         System.out.println("流合并：" + newList);
         System.out.println("limit：" + collect);
         System.out.println("skip：" + collect2);
+    }
+
+    @Test
+    void testCollectingAndThen() {
+        List<Integer> list = Arrays.asList(1,2,3,6);
+        double result = list.stream().collect(Collectors.collectingAndThen(Collectors.averagingInt(s->s),Math::ceil));
+        System.out.println(result);
     }
 }
