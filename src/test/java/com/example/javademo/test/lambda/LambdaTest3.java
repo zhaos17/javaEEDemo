@@ -1,4 +1,4 @@
-package com.example.javademo.test;
+package com.example.javademo.test.lambda;
 
 
 import com.example.javademo.service.LambdaService;

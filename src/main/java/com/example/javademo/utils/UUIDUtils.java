@@ -2,7 +2,7 @@ package com.example.javademo.utils;
 
 import org.springframework.util.StringUtils;
 
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author: zhaos
@@ -15,9 +15,45 @@ public class UUIDUtils {
 //        System.out.println(fromTimeUUID(UUID.fromString("ed6247c0-62c2-11ea-b3fd-356953dd22be")));
         // 6c185e90-3470-11eb-8589-e99e781d3641
         // abbba9c0-3476-11eb-8589-e99e781d3641
-        System.out.println(fromTimeUUID(fromString("2a0cd594-6926-11eb-9a8f-f5be458cec35")));
-        System.out.println(fromTimeUUID(fromString("02d551ab-3055-11eb-90e1-813a7c3d67d0")));
+//        System.out.println(fromTimeUUID(fromString("a1a95820-7878-11ea-9d75-39447283014d")));
+//        System.out.println(fromTimeUUID(fromString("02d551ab-3055-11eb-90e1-813a7c3d67d0")));
+//        List<UUID> inDoorDeviceStoreIds = new ArrayList<>();
+//
+//        System.out.println(CollectionUtils.isEmpty(inDoorDeviceStoreIds));
+        System.out.println(fromString("1eb3476abbba9c08589e99e781d3641"));
+//        Date date = new Date(1617328962000L);
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//        int intMonth = calendar.get(Calendar.MONTH) + 1;
+//        int quarter = intMonth % 3 == 0 ? intMonth/3 : intMonth/3+1;
+//        System.out.println(quarter);
+
+        List<Integer> list = Arrays.asList(1,2,3,4,5);
+        System.out.println(list.subList(0, 3).size());
     }
+
+//    public static void main(String[] args) {
+//        int[] arr = {1,3,5,7,9};
+//        int[] arr2 = {2,3,5,6,8};
+
+//        int i = 0,j = 0;
+//        for (;i < arr.length;) {
+//            for (;j < arr2.length;) {
+//                if (arr[i] < arr2[j]) {
+//                    System.out.println(arr[i]);
+//                    i++;
+//                    continue;
+//                } else if (arr[i] > arr2[j]) {
+//                    System.out.println(arr2[j]);
+//                    j++;
+//                    continue;
+//                } else {
+//                    continue;
+//                }
+//
+//            }
+//        }
+//    }
 
     public static UUID fromString(String src) {
         if (StringUtils.isEmpty(src)) {

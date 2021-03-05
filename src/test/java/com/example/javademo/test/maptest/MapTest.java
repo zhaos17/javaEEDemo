@@ -52,4 +52,22 @@ public class MapTest {
         System.out.println(list2);
 
     }
+
+    @Test
+    public void test01() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("1","1");
+
+
+        ArrayList<Object> objects = new ArrayList<>();
+
+        HashSet<String> hashSet = new HashSet<>();
+        Iterator<String> iterator = hashSet.iterator();
+    }
+
+    public static void main(String[] args) {
+        double f = 0.5585;
+
+        System.out.println(String.format("%.2f", f));
+    }
 }
