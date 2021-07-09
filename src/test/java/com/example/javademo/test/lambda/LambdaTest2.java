@@ -19,7 +19,7 @@ public class LambdaTest2 {
         };
         lambda2.method(1);
 
-        //3.简化方法体大括号，如果方法条只有一条语句，则可以胜率方法体大括号
+        //3.简化方法体大括号，如果方法条只有一条语句，则可以省略方法体大括号
         LambdaService.NoReturnNoParam lambda3 = () -> System.out.println("简化方法体大括号");
         lambda3.method();
 

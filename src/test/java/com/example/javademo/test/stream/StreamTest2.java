@@ -25,11 +25,22 @@ public class StreamTest2 {
         personList.add(new Person("Anni", 8200, 44,"female", "New York"));
         personList.add(new Person("Owen", 9500, 25,"male", "New York"));
         personList.add(new Person("Alisa", 7900, 66,"female", "New York"));
+        personList.add(new Person("Alisa", 7900, 66,"female", "New York"));
         // 通过 @Builder 构造对象，
         Person buildPerson = Person.builder().name("noName").salary(2222).age(27).sex("male").area("homeless").build();
         personList.add(buildPerson);
 
         return personList;
+    }
+
+    /**
+     * list转map
+     */
+    @Test
+    void test() {
+        List<Person> personList = generateList();
+        Map<String, Integer> collect = personList.stream().collect(Collectors.toMap(Person::getName, Person::getSalary, Integer::sum));
+        collect.forEach((k,v) -> System.out.println("k:" + k + ",v:" + v));
     }
 
     @Test
@@ -41,12 +52,12 @@ public class StreamTest2 {
         // 匹配第一个
         Optional<Integer> findFirst = list.stream().filter(x -> x > 6).findFirst();
         // 匹配任意（适用于并行流）
-        Optional<Integer> findAny = list.parallelStream().filter(x -> x > 6).findAny();
+        Optional<Integer> findAny = list.parallelStream().filter(x -> x > 11).findAny();
         // 是否包含符合特定条件的元素
-        boolean anyMatch = list.stream().anyMatch(x -> x > 6);
-        System.out.println("匹配第一个值：" + findFirst.get());
+        boolean anyMatch = list.stream().anyMatch(x -> x > 11);
+        System.out.println("匹配第一个值：" + findFirst.orElse(-1));
         // ifPresent() orElseGet() orElse()
-        System.out.println("匹配任意一个值：" + findAny.get());
+        System.out.println("匹配任意一个值：" + findAny.orElse(-1));
         System.out.println("是否存在大于6的值：" + anyMatch);
     }
 

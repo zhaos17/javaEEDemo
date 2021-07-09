@@ -1,8 +1,19 @@
 package com.example.javademo.utils;
 
+import javafx.util.Pair;
 import org.springframework.util.StringUtils;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author: zhaos
@@ -11,26 +22,38 @@ import java.util.*;
 public class UUIDUtils {
 
     public static void main(String[] args) {
-//        System.out.println(fromTimeUUID(UUID.fromString("6c075c40-cbf1-11ea-aaa5-059f09ba413e")));
-//        System.out.println(fromTimeUUID(UUID.fromString("ed6247c0-62c2-11ea-b3fd-356953dd22be")));
-        // 6c185e90-3470-11eb-8589-e99e781d3641
-        // abbba9c0-3476-11eb-8589-e99e781d3641
-//        System.out.println(fromTimeUUID(fromString("a1a95820-7878-11ea-9d75-39447283014d")));
-//        System.out.println(fromTimeUUID(fromString("02d551ab-3055-11eb-90e1-813a7c3d67d0")));
-//        List<UUID> inDoorDeviceStoreIds = new ArrayList<>();
+////        String str = "1e93eebdd25cef098197f0037bd9d5c," +
+////                "1eb34706c185e908589e99e781d3641," +
+////                "1eb3470023919108589e99e781d3641," +
+////                "1eb346fc8f696f08589e99e781d3641," +
+////                "1eb346fafc5eb908589e99e781d3641," +
+////                "1e951e824ddd0d0b8303ddbbf1e10f7," +
+////                "1ea7878a1a958209d7539447283014d," +
+////                "1eb3476abbba9c08589e99e781d3641," +
+////                "1e951e824de1ef0b8303ddbbf1e10f7," +
+////                "1e951e824ddf7e0b8303ddbbf1e10f7";
+////        String[] split = str.split(",");
+////        for (String s : split) {
+////            System.out.println(fromString(s));
+////        }
 //
-//        System.out.println(CollectionUtils.isEmpty(inDoorDeviceStoreIds));
-        System.out.println(fromString("1eb3476abbba9c08589e99e781d3641"));
-//        Date date = new Date(1617328962000L);
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(date);
-//        int intMonth = calendar.get(Calendar.MONTH) + 1;
-//        int quarter = intMonth % 3 == 0 ? intMonth/3 : intMonth/3+1;
-//        System.out.println(quarter);
-
-        List<Integer> list = Arrays.asList(1,2,3,4,5);
-        System.out.println(list.subList(0, 3).size());
+////        System.out.println(fromString("1e93eebdd25cef098197f0037bd9d5c"));
+////        System.out.println(fromTimeUUID(fromString("41833b40-e818-11ea-8518-f18d5e21b4c8")));
+//
+////        System.out.println(fromTimeUUID(fromString("b92577e0-511e-11e9-83d9-750d46843b0c")));
+////
+////        System.out.println(fromTimeUUID(fromString("02391910-3470-11eb-8589-e99e781d3641")));
+//
+////        System.out.println(getDayOfMonth());
+//
+        List<Double> dbSort = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            dbSort.add(Math.random());
+        }
+        List<Double> collect = dbSort.stream().sorted(((o1, o2) -> Double.compare(o2, o1))).collect(Collectors.toList());
+        collect.forEach(System.out::println);
     }
+
 
 //    public static void main(String[] args) {
 //        int[] arr = {1,3,5,7,9};
@@ -80,6 +103,19 @@ public class UUIDUtils {
         String str = src.toString();
         // 58e0a7d7-eebc-11d8-9669-0800200c9a66 => 1d8eebc58e0a7d796690800200c9a66. Note that [11d8] -> [1d8]
         return str.substring(15, 18) + str.substring(9, 13) + str.substring(0, 8) + str.substring(19, 23) + str.substring(24);
+    }
+
+    public static Pair<Integer, Integer> getImg() throws IOException {
+        URL url = new URL("https://hkywuyinzifenxi.oss-cn-hangzhou.aliyuncs.com/image/BgModel/mapa20210415181428.png");
+        URLConnection connection = url.openConnection();
+        connection.setDoOutput(true);
+        BufferedImage image = ImageIO.read(connection.getInputStream());
+        int srcWidth = image.getWidth();      // 源图宽度
+        int srcHeight = image.getHeight();    // 源图高度
+
+        System.out.println("srcWidth = " + srcWidth);
+        System.out.println("srcHeight = " + srcHeight);
+        return null;
     }
 
 }
